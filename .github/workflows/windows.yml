@@ -51,9 +51,7 @@ jobs:
       - name: Configure and build 
         shell: msys2 {0}
         run: |
-          export CFLAGS="-O3 -static -march=rocketlake"
-          export CXXFLAGS=$CFLAGS
-          export CPPFLAGS=$CFLAGS
+          sed -i 's|-march=x86-64|-march=rocketlake|' app/Makefile
           export LDFLAGS="--static -Wl,--strip-all"
           make -j$(nproc) CXX=clang++ release
 
