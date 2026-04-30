@@ -53,7 +53,7 @@ jobs:
         run: |
           sed -i 's|-march=x86-64|-march=rocketlake|' app/Makefile
           export LDFLAGS="--static -Wl,--strip-all"
-          make -j$(nproc) CXX=clang++ release
+          make -j$(nproc) CXX=clang++ build=release
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
