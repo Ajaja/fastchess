@@ -45,8 +45,8 @@ jobs:
         shell: msys2 {0}
         run: |
           sed -i 's|-march=x86-64|-march=rocketlake|' app/Makefile
-          export LDFLAGS="--static -Wl,--strip-all"
           make -j$(nproc) CXX=clang++ build=release
+          strip.exe fastchess.exe 
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
