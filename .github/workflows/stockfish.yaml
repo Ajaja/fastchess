@@ -45,7 +45,7 @@ jobs:
         shell: msys2 {0}
         run: |
           cd src
-          make -j$(nproc) profile-build COMP=clang ARCH=x86-64-avx512icl
+          make -j$(nproc) build COMP=clang ARCH=x86-64-avx512icl
           make strip
 
       - name: Upload artifact
