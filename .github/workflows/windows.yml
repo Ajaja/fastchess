@@ -22,14 +22,7 @@ jobs:
           repository: 'Disservin/fastchess'
           ref: ${{ inputs.commit }}
 
-      - name: Checkout MINGW-packages repository
-        uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
-          repository: 'msys2/MINGW-packages'
-          path: 'MINGW-packages'
-
-      - name: Setup MSYS2 (UCRT64 environment)
+      - name: Setup MSYS2 (CLANG64 environment)
         uses: msys2/setup-msys2@v2
         with:
           msystem: CLANG64
