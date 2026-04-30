@@ -38,7 +38,7 @@ jobs:
         run: |
           COMMIT=$(git rev-parse --short HEAD)
           DATE=$(git log -1 --format=%cs)
-          ARTIFACT_NAME="fastchess-git-${COMMIT}-${DATE}-win64"
+          ARTIFACT_NAME="stockfish-git-${COMMIT}-${DATE}-win64"
           echo "artifact_name=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
           
       - name: Configure and build 
@@ -46,7 +46,7 @@ jobs:
         run: |
           cd src
           make -j$(nproc) profile-build COMP=clang ARCH=x86-64-avx512icl
-          strip.exe stockfish.exe
+          make strip
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
