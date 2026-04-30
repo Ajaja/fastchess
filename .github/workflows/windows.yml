@@ -32,12 +32,12 @@ jobs:
       - name: Setup MSYS2 (UCRT64 environment)
         uses: msys2/setup-msys2@v2
         with:
-          msystem: UCRT64
+          msystem: CLANG64
           update: true
           install: >-
             git
             make
-            mingw-w64-ucrt-x86_64-clang
+            mingw-w64-clang64-x86_64-clang
 
       - name: Extract version info
         id: version
@@ -55,10 +55,10 @@ jobs:
           export CXXFLAGS=$CFLAGS
           export CPPFLAGS=$CFLAGS
           export LDFLAGS="--static"
-          make CXX=clang++
+          make -j$(nproc) CXX=clang++
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
         with:
           name: ${{ steps.version.outputs.artifact_name }}.zip
-          path: .
+          path: fastchess.exe
