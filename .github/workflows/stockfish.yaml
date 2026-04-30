@@ -38,7 +38,7 @@ jobs:
         run: |
           COMMIT=$(git rev-parse --short HEAD)
           DATE=$(git log -1 --format=%cs)
-          ARTIFACT_NAME="stockfish-git-${COMMIT}-${DATE}-win64"
+          ARTIFACT_NAME="stockfish-avx512icl-git-${COMMIT}-${DATE}-win64"
           echo "artifact_name=${ARTIFACT_NAME}" >> $GITHUB_OUTPUT
           
       - name: Configure and build 
