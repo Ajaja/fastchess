@@ -55,7 +55,7 @@ jobs:
           export CXXFLAGS=$CFLAGS
           export CPPFLAGS=$CFLAGS
           export LDFLAGS="--static -Wl,--strip-all"
-          make -j$(nproc) CXX=clang++
+          make -j$(nproc) CXX=clang++ release
 
       - name: Upload artifact
         uses: actions/upload-artifact@v4
